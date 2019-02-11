@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    //If building with strict Android 6.0 the following will need to be uncommented
+    //See: https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html
+    //And: http://stackoverflow.com/questions/31653002/how-to-use-the-legacy-apache-http-client-on-android-m
+    useLibrary "org.apache.http.legacy"
+
+    defaultConfig {
+        minSdkVersion 20
+        targetSdkVersion 27
+        // replace the below string with your own Google client ID. Make sure this is consistent
+        // with the values used in janrain_config.json
+
+        manifestPlaceholders = [
+                'appAuthRedirectScheme': 'com.googleusercontent.apps.346000571262-m5u27lu130n1h1i2vbsggo34ae6nr1hp'
+        ]
+
+    }
+
+    buildTypes {
+        release {
+            consumerProguardFiles 'proguard-rules-jump.pro'
+        }
+        debug {
+            debuggable true
+        }
+    }
+}
+
+dependencies {
+    api 'com.android.support:support-v4:27.1.0'
+    api files('libs/org.apache.http.legacy.jar')
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    api 'com.squareup.okhttp3:okhttp-apache:3.10.0'
+    api 'com.squareup.okio:okio:1.14.0'
+    api 'net.openid:appauth:0.7.0'
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenLocal()
+        mavenCentral()
+        google()
+    }
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+}
