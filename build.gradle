@@ -76,7 +76,7 @@ artifactory {
     contextUrl = 'http://artifactory-ehv.ta.philips.com:8082/artifactory'
     publish {
         repository {
-            repoKey = 'iet-mobile-android-snapshot-local'
+            repoKey = 'iet-mobile-android-release-local'
             username = "320049003"
             password = "#W3llc0m3"
             defaults {
