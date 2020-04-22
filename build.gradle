@@ -73,12 +73,12 @@ allprojects {
 }
 
 artifactory {
-    contextUrl = 'http://artifactory-ehv.ta.philips.com:8082/artifactory'
+    contextUrl = 'https://artifactory-ehv.ta.philips.com/artifactory'
     publish {
         repository {
             repoKey = 'iet-mobile-android-release-local'
             username = "320049003"
-            password = "#W3llc0m3"
+            password = "#W3llc4m3"
             defaults {
                 publishPom = true
                 publishIvy = false
@@ -95,7 +95,7 @@ publishing {
     publications {
         apk(MavenPublication) {
             groupId 'com.janrain.android'
-            version = '7.1.1'
+            version = '7.2.0'
             artifactId 'jump-android'
 
             artifact("$buildDir/outputs/aar/${archivesBaseName}-release.aar")
