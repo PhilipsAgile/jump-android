@@ -1,4 +1,11 @@
-#Introduction 
+
+v7.2.0
+
+Added Engage support for Apple provider.
+Added Engage support for Line provider.
+
+
+#Introduction
 The Janrain Mobile libaries for Android is available open-source under a Berkeley license, as found in the LICENSE file.
 
 Current Version : 7.1.1
